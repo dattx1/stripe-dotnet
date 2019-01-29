@@ -27,7 +27,7 @@ namespace StripeTests
         {
             string[] expansions =
             {
-              "business_logo",
+              "settings.branding.logo",
             };
 
             string json = this.GetFixture("/v1/accounts/acct_123", expansions);
@@ -38,8 +38,8 @@ namespace StripeTests
             Assert.NotNull(account.Id);
             Assert.Equal("account", account.Object);
 
-            Assert.NotNull(account.BusinessLogo);
-            Assert.Equal("file", account.BusinessLogo.Object);
+            Assert.NotNull(account.Settings.Branding.Logo);
+            Assert.Equal("file", account.Settings.Branding.Logo.Object);
         }
     }
 }
