@@ -1,8 +1,8 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ChargeCreateOptions : BaseOptions
     {
@@ -94,11 +94,15 @@ namespace Stripe
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
 
+        /// <summary>
+        /// A payment source to be charged. This can be the ID of a card (i.e., credit or debit
+        /// card), a bank account, a source, a token, or a connected account. For certain
+        /// sources—namely, cards, bank accounts, and attached sources—you must also pass the ID of
+        /// the associated customer.
+        /// </summary>
         [JsonProperty("source")]
-        public string SourceId { get; set; }
-
-        [JsonProperty("source")]
-        public CardCreateNestedOptions SourceCard { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         /// <summary>
         /// An arbitrary string to be displayed on your customer's credit card statement. This may
