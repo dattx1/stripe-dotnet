@@ -41,12 +41,12 @@ namespace StripeTests
 
             this.createOptions = new PaymentIntentCreateOptions
             {
-                AllowedSourceTypes = new List<string>
+                Amount = 1000,
+                Currency = "usd",
+                PaymentMethodTypes = new List<string>
                 {
                     "card",
                 },
-                Amount = 1000,
-                Currency = "usd",
                 TransferData = new PaymentIntentTransferDataOptions
                 {
                     Amount = 100,

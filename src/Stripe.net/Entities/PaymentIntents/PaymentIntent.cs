@@ -13,9 +13,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("allowed_source_types")]
-        public List<string> AllowedSourceTypes { get; set; }
-
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
@@ -110,8 +107,8 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("next_source_action")]
-        public PaymentIntentSourceAction NextSourceAction { get; set; }
+        [JsonProperty("next_action")]
+        public PaymentIntentNextAction NextAction { get; set; }
 
         #region Expandable OnBehalfOf (Account)
         [JsonIgnore]
@@ -134,6 +131,9 @@ namespace Stripe
             }
         }
         #endregion
+
+        [JsonProperty("payment_method_types")]
+        public List<string> PaymentMethodTypes { get; set; }
 
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
